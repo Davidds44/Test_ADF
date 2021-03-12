@@ -1,0 +1,37 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "DataFactory-studentTest"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/RestService1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "téléchargement data openreseau",
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "https://opendata.reseaux-energies.fr/api/records/1.0/search/?dataset=eco2mix-regional-cons-def&q=&rows=800&facet=libelle_region&facet=nature&facet=date_heure&refine.date_heure=2020%2F12%2F01",
+					"enableServerCertificateValidation": false,
+					"authenticationType": "Basic",
+					"userName": "david",
+					"password": {
+						"type": "SecureString",
+						"value": "**********"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
