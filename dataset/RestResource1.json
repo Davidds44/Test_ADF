@@ -1,0 +1,15 @@
+{
+	"name": "RestResource1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "RestService1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": "https://opendata.reseaux-energies.fr/api/records/1.0/search/?dataset=eco2mix-regional-cons-def&q=&rows=800&facet=libelle_region&facet=nature&facet=date_heure&refine.date_heure=2020%2F12%2F01"
+		},
+		"schema": []
+	}
+}
